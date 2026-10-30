@@ -102,7 +102,7 @@
   filter: hue-rotate(75deg) contrast(1.1);
 }
 
-.post__image--perfection  {
+.post__image--perfection {
   filter: grayscale(1) contrast(1.25);
 }
 
