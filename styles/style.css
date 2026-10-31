@@ -13,7 +13,7 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
-  font-family: var(--main-font), Arial;
+  font-family: var(--main-font), Arial, sans-serif;
   font-variation-settings: "wght" var(--main-font-weight);
   background-size: cover;
   background-image: var(--background-image);
@@ -41,15 +41,14 @@
 }
 
 .header__logo {
-  font-family: var(--second-font), monospace;
+  font-family: var(--second-font), fantasy;
   font-size: clamp(49px, 1.9087rem + 4.9231vw, 65px);
   font-weight: 400;
   text-transform: uppercase;
-  max-height: 45px;
 }
 
 .header__title {
-  font-family: var(--second-font), monospace;
+  font-family: var(--second-font), fantasy;
   font-size: clamp(14px, 0.226rem + 2.7692vw, 23px);
   font-weight: 400;
   text-transform: uppercase;
@@ -72,7 +71,7 @@
 
 .post__title {
   padding: 4px 10px;
-  font-family: var(--main-font), Arial;
+  font-family: var(--main-font), Arial, sans-serif;
   font-size: 18px;
   font-variation-settings: "wght" var(--title-font-weight);
 }
@@ -90,35 +89,35 @@
   background-color: #e7e7e7;
 }
 
-.post__image--start {
+.post__image--saturate {
   filter: saturate(1.3) contrast(1.05);
 }
 
-.post__image--clean {
+.post__image--brightness {
   filter: brightness(1.12);
 }
 
-.post__image--space {
+.post__image--hue-contrast {
   filter: hue-rotate(75deg) contrast(1.1);
 }
 
-.post__image--perfection {
+.post__image--grayscale {
   filter: grayscale(1) contrast(1.25);
 }
 
-.post__image--team {
+.post__image--muted {
   filter: brightness(0.85) saturate(0.75) hue-rotate(180deg);
 }
 
-.post__image--adaptive {
+.post__image--vivid {
   filter: saturate(1.7) hue-rotate(-10deg);
 }
 
-.post__image--memory {
+.post__image--soft-sepia {
   filter: sepia(0.2) contrast(0.9);
 }
 
-.post__image--dream {
+.post__image--warm-sepia {
   filter: sepia(0.35) saturate(1.3);
 }
 
@@ -126,7 +125,7 @@
   position: absolute;
   inset-block-start: 25px;
   inset-inline-end: 25px;
-  font-family: var(--second-font), monospace;
+  font-family: var(--second-font), fantasy;
   font-weight: var(--main-font-weight);
   font-size: 14px;
   text-transform: uppercase;
@@ -149,7 +148,7 @@
 .post__text {
   display: grid;
   gap: 25px;
-  font-family: var(--main-font), Arial;
+  font-family: var(--main-font), Arial, sans-serif;
   font-size: 18px;
   font-variation-settings: "wght" var(--main-font-weight);
   line-height: 21px;
@@ -183,52 +182,22 @@
   border-color: var(--accent-color);
 }
 
-.post__like-button {
-  min-inline-size: 130px;
-  min-block-size: 38px;
-  border: 2px solid #000;
-  background-color: #fff;
-  font-family: var(--second-font), monospace;
-  font-size: 14px;
-  font-weight: var(--main-font-weight);
-  cursor: pointer;
-  position: relative;
-  isolation: isolate;
-  transition: box-shadow 0.3s ease;
-}
-
-.post__like-button:focus-visible,
-.save-button:focus-visible {
-  outline: none;
-  box-shadow: 2px 2px 0 var(--accent-color);
-}
-
-.footer {
+.button {
   display: flex;
-  justify-content: center;
-  margin-block-start: 50px;
-  padding-block-end: 50px;
-}
-
-.save-button {
-  display: flex;
-  font-family: var(--second-font), monospace;
-  font-size: 14px;
-  font-weight: var(--main-font-weight);
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 17px 20px;
-  border: 2px solid #000;
-  background-color: #fff;
-  cursor: pointer;
-  transition: box-shadow 0.3s ease;
   position: relative;
   isolation: isolate;
+  border: 2px solid #000;
+  background-color: #fff;
+  font-family: var(--second-font), fantasy;
+  font-size: 14px;
+  font-weight: var(--main-font-weight);
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
 }
 
-.post__like-button::before,
-.save-button::before {
+.button::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -240,9 +209,30 @@
   pointer-events: none;
 }
 
-.post__like-button:hover::before,
-.save-button:hover::before {
+.button:hover::before {
   scale: 1 1;
+}
+
+.button:focus-visible {
+  outline: none;
+  box-shadow: 2px 2px 0 var(--accent-color);
+}
+
+.card__like-button {
+  min-inline-size: 130px;
+  min-block-size: 38px;
+}
+
+.main__actions {
+  display: flex;
+  justify-content: center;
+  margin-block-start: 50px;
+  padding-block-end: 50px;
+}
+
+.save-button {
+  gap: 8px;
+  padding: 17px 20px;
 }
 
 .button__text {
@@ -264,7 +254,7 @@
 }
 
 .dialog__text {
-  font-family: var(--second-font), monospace;
+  font-family: var(--second-font), fantasy;
   text-transform: uppercase;
   font-size: 14px;
   font-weight: 400;
@@ -365,10 +355,10 @@
 }
 
 @media (width <= 375px) {
-.footer .save-button {
-  flex-direction: column;
-  gap: 8px;
-  padding: 14px 20px
+  .main__actions .save-button {
+    flex-direction: column;
+    gap: 8px;
+    padding: 14px 20px;
 }
 
   .dialog {
@@ -389,4 +379,3 @@
     text-shadow: 1px 1px 2px #000;
   }
 }
-
